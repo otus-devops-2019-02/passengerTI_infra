@@ -1,6 +1,11 @@
 # passengerTI_infra
 passengerTI Infra repository
 
+Servers
+
+ bastion_IP = 104.155.3.193
+ someinternalhost_IP = 10.132.0.5
+
 One-line connect to someinternalhost
 
  ssh -t -i ~/.ssh/appuser -A appuser@104.155.3.193 ssh 10.132.0.5
