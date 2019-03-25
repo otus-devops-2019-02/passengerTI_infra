@@ -1,6 +1,31 @@
 # passengerTI_infra
 passengerTI Infra repository
 
+## ДЗ #3: cloud-testapp
+ testapp_IP = 35.187.118.194
+ testapp_port = 9292
+
+gcloud compute instances create reddit-app \
+	--boot-disk-size=10GB \
+	--image-family ubuntu-1604-lts \
+	--image-project=ubuntu-os-cloud \
+	--machine-type=g1-small \
+	--tags puma-server \
+	--metadata startup-script=startup_script.sh
+	--restart-on-failure
+
+
+gcloud compute firewall-rules create default-puma-server  \
+ 	--network default \
+    --action allow \
+    --direction ingress \
+    --rules tcp:9292 \
+    --source-ranges 0.0.0.0/0 \
+    --priority 1000 \
+    --target-tags puma-server
+
+## ДЗ №2: cloud-bastion
+
 Servers
 
  bastion_IP = 104.155.3.193
