@@ -14,7 +14,6 @@ gcloud compute instances create reddit-app \
 	--metadata startup-script=startup_script.sh
 	--restart-on-failure
 
-
 gcloud compute firewall-rules create default-puma-server  \
  	--network default \
     --action allow \
@@ -23,6 +22,8 @@ gcloud compute firewall-rules create default-puma-server  \
     --source-ranges 0.0.0.0/0 \
     --priority 1000 \
     --target-tags puma-server
+
+gcloud compute firewall-rules delete default-puma-server
 
 ## ДЗ №2: cloud-bastion
 
