@@ -1,6 +1,14 @@
 # passengerTI_infra
 passengerTI Infra repository
 
+## ДЗ №4: packer-base
+ Установлен packer v.1.3.5
+ Установлен ADC
+ Создан packer template
+ Выполнен packer build
+ Образ VM успешно создан
+
+
 ## ДЗ #3: cloud-testapp
  testapp_IP = 35.187.118.194
  testapp_port = 9292
