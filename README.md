@@ -1,6 +1,12 @@
 # passengerTI_infra
 passengerTI Infra repository
 
+## ДЗ №5: terraform-1
+ Определена input переменная для приватного ключа
+ Определена input переменная для задания зоны
+ Отформатированны все конфигурационные файлы с помощь terramorm fmt
+ Добавлен файл terraform.tfvars.example
+
 ## ДЗ №4: packer-base
  Установлен packer v.1.3.5
  Установлен ADC
