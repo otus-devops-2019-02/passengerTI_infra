@@ -15,9 +15,44 @@ resource "google_compute_instance" "app" {
 	metadata {
 		ssh-keys = "appuser:${file(var.public_key_path)}"
 	}
+
 }
 
-resource "google_compute_address" "app_ip" { name = "reddit-app-ip" }
+resource "null_resource" "app_provision" {
+
+    connection {
+        type  = "ssh"
+        user  = "appuser"
+        agent = false
+    
+        # путь до приватного ключа
+        private_key = "${file(var.private_key_path)}"
+        host = "${google_compute_instance.app.network_interface.0.access_config.0.nat_ip}" 
+      }
+
+    provisioner "file" {
+        source      = "${path.module}/files/puma.service"
+        destination = "/tmp/puma.service"
+    }
+
+    provisioner "remote-exec" {
+	script = "${path.module}/files/deploy.sh"
+    }
+
+    provisioner "remote-exec" {
+        inline = [
+          "sudo sed -i 's/#Environment=DATABASE_URL=VALUE/Environment=DATABASE_URL=${var.db_internal_ip}/;' /etc/systemd/system/puma.service",
+          "sudo systemctl daemon-reload",
+          "sudo systemctl restart puma.service",
+        ]
+    }
+
+}
+
+
+resource "google_compute_address" "app_ip" {
+    name = "reddit-app-ip"
+}
 
 resource "google_compute_firewall" "firewall_puma" {
 	name = "allow-puma-default"
