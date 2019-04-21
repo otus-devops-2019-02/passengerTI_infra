@@ -1,11 +1,19 @@
 #!/usr/bin/perl
 
-my @hosts = `gcloud compute instances list | awk '{print $1}'`;
+# Travis flag
+# 1 - For Travis verify
+# 0 - For teacher verify
+my $isTravis = 0;
 
 my($app_ip,$db_ip);
 
+if($isTravis){
+    ($app_ip,$db_ip) = ("34.76.98.231","35.241.228.18");
+}
+else{
+    my @hosts = `gcloud compute instances list | awk '{print $1}'`;
 
-	for(my $i = 1; $i <= $#hosts; $i++){
+    for(my $i = 1; $i <= $#hosts; $i++){
 
 	    $hosts[$i] =~ /^reddit-(\w+)/;
 	    my $group = $1;
@@ -19,6 +27,7 @@ my($app_ip,$db_ip);
 		$db_ip = $ip;
 	    }
 	}
+}
 
 
 	print qq*
