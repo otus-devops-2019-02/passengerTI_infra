@@ -3,7 +3,7 @@
 # Travis flag
 # 1 - For Travis verify
 # 0 - For teacher verify
-my $isTravis = 0;
+my $isTravis = 1;
 
 my($app_ip,$db_ip);
 
