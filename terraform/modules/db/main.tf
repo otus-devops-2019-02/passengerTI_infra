@@ -25,12 +25,12 @@ resource "google_compute_instance" "db" {
 	    private_key = "${file(var.private_key_path)}"
 	}
 
-	provisioner "remote-exec" {
-	    inline = [
-		"sudo sed -i 's/bindIp: 127.0.0.1/bindIp: ${google_compute_instance.db.network_interface.0.network_ip}/;' /etc/mongod.conf",
-		"sudo systemctl restart mongod.service",
-	    ]
-	}
+#	provisioner "remote-exec" {
+#	    inline = [
+#		"sudo sed -i 's/bindIp: 127.0.0.1/bindIp: ${google_compute_instance.db.network_interface.0.network_ip}/;' /etc/mongod.conf",
+#		"sudo systemctl restart mongod.service",
+#	    ]
+#	}
 
 }
 

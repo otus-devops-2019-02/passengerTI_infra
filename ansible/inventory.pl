@@ -3,12 +3,12 @@
 # Travis flag
 # 1 - For Travis verify
 # 0 - For teacher verify
-my $isTravis = 1;
+my $isTravis = 0;
 
 my($app_ip,$db_ip);
 
 if($isTravis){
-    ($app_ip,$db_ip) = ("34.76.98.231","35.241.228.18");
+    ($app_ip,$db_ip) = ("104.155.43.108","35.205.181.186");
 }
 else{
     my @hosts = `gcloud compute instances list | awk '{print $1}'`;
