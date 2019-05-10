@@ -17,6 +17,5 @@
   systemd: name=puma enabled=yes
 
 - name: Show info about the env this host belongs to
-  debug: 
+  debug:
     msg: "This host is in {{ env }} environment!!!"
-
