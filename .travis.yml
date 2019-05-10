@@ -21,8 +21,6 @@ script:
   - docker exec -e USER=appuser hw-test bash -c 'touch /root/.ssh/appuser'
   - docker exec -e USER=appuser hw-test bash -c 'rm -rf terraform/stage/backend.tf'
   - docker exec -e USER=appuser hw-test bash -c 'rm -rf terraform/prod/backend.tf'
-  - docker exec -e USER=appuser hw-test bash -c 'cd terraform/ && terraform init'
-  - docker exec -e USER=appuser hw-test bash -c 'cd terraform/ && terraform validate'
   - docker exec -e USER=appuser hw-test bash -c 'cd terraform/stage/ && terraform get'
   - docker exec -e USER=appuser hw-test bash -c 'cd terraform/stage/ && terraform init'
   - docker exec -e USER=appuser hw-test bash -c 'cd terraform/stage/ && terraform validate'
