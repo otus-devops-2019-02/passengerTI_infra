@@ -27,7 +27,6 @@ script:
   - docker exec -e USER=appuser hw-test bash -c 'cd terraform/prod/ && terraform get'
   - docker exec -e USER=appuser hw-test bash -c 'cd terraform/prod/ && terraform init'
   - docker exec -e USER=appuser hw-test bash -c 'cd terraform/prod/ && terraform validate'
-  - docker exec -e USER=appuser hw-test bash -c 'cd terraform/ && tflint'
   - docker exec -e USER=appuser hw-test bash -c 'cd terraform/stage/ && tflint'
   - docker exec -e USER=appuser hw-test bash -c 'cd terraform/prod/ && tflint'
 notifications:
