@@ -26,6 +26,6 @@
 #    systemd:
 #      name: mongod
 #      enabled: yes
-roles:
-  - db
+  roles:
+    - db
 
